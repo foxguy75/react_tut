@@ -41,6 +41,7 @@ export class ListForum extends Component< {}, IForumState >
             });
             tempState.formValue = "";
             this.setState(tempState);
+            event.preventDefault();
         }
     }
 
@@ -54,7 +55,7 @@ export class ListForum extends Component< {}, IForumState >
                     <label>
                         {label}
                     </label>
-                    <input onChange={this.handleChange} onKeyDown={this.handleKeyPress} value={this.state.formValue}></input>
+                    <input type={"text"} onChange={this.handleChange} onKeyDown={this.handleKeyPress} value={this.state.formValue}></input>
                 </form>
                 {this.state.list.length > 0 && <List isOrderedList={false} list={this.state.list} key={"forumList"}></List>}
             </div>
