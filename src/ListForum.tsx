@@ -4,6 +4,7 @@ import { IListNode, List } from "./List";
 export interface IForumState
 {
     list: Array<IListNode>;
+    activeNode: IListNode | null;
     formValue: string;
 }
 
@@ -15,7 +16,8 @@ export class ListForum extends Component< {}, IForumState >
         
         this.state = {
             list: [],
-            formValue: ""
+            formValue: "",
+            activeNode: null
         };
 
         this.handleChange = this.handleChange.bind(this);
@@ -25,9 +27,24 @@ export class ListForum extends Component< {}, IForumState >
     handleChange( event: React.ChangeEvent<HTMLInputElement> )
     {
         let tempValue = {...this.state };
+
+        if( event.target.value === "" )
+        {
+            tempValue.activeNode = null;
+        }
+        else if( tempValue.activeNode )
+        {
+            tempValue.activeNode.listContent = event.target.value;
+        }
+        else 
+        {
+            tempValue.activeNode = {
+                listContent: event.target.value,
+                children: []
+            };
+        }
         tempValue.formValue = event.target.value;
         this.setState(tempValue);
-        return;
     }
 
     handleKeyPress( event: React.KeyboardEvent<HTMLInputElement> )
@@ -35,11 +52,9 @@ export class ListForum extends Component< {}, IForumState >
         if( event.key === 'Enter' )
         {
             let tempState = { ...this.state };
-            tempState.list.push({
-                listContent: tempState.formValue,
-                children: []
-            });
+            tempState.list.push( tempState.activeNode! );
             tempState.formValue = "";
+            tempState.activeNode = null;
             this.setState(tempState);
             event.preventDefault();
         }
@@ -58,6 +73,7 @@ export class ListForum extends Component< {}, IForumState >
                     <input type={"text"} onChange={this.handleChange} onKeyDown={this.handleKeyPress} value={this.state.formValue}></input>
                 </form>
                 {this.state.list.length > 0 && <List isOrderedList={false} list={this.state.list} key={"forumList"}></List>}
+                {this.state.activeNode && <List isOrderedList={false} list={[this.state.activeNode]} key={"forumList"}></List>}
             </div>
         );
     }
