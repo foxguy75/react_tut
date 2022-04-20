@@ -12,23 +12,11 @@ export interface IListProp
     list: Array<IListNode>;
 }
 
-// export interface IListState
-// {   
-//     isOrderedList: Boolean;
-//     list: Array<IListNode>;
-// }
-
 export class List extends Component< IListProp >
 {
     constructor( props: IListProp )
     {
         super(props);
-
-        // this.state = {
-        //     isOrderedList: props.isOrderedList,
-        //     list: props.list
-        // };
-
         this.generateUnorderedList = this.generateUnorderedList.bind(this);
     }
 
@@ -59,6 +47,7 @@ export class List extends Component< IListProp >
 
     render(): JSX.Element
     {
+        
         return this.generateUnorderedList( this.props.list );
     }
 }

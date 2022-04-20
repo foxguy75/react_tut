@@ -1,0 +1,15 @@
+nav{
+    border-bottom: solid 1px;
+    border-top: solid 1px; 
+    padding-top: 1rem; 
+    padding-bottom: 1rem;
+    margin-top: 1rem; 
+    margin-bottom: 1rem; 
+}
+
+.nav-link{
+    text-decoration: none;
+    padding-right: 1rem;
+    text-transform: uppercase;
+    letter-spacing: .2rem;
+}
