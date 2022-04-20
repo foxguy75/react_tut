@@ -11,6 +11,7 @@ export class App extends Component
                 <nav>
                     <Link to="/list" className={"nav-link"}>List</Link> {" "}
                     <Link to="/forum" className={"nav-link"}>Forum</Link>
+                    <Link to="/temp" className={"nav-link"}>Temp</Link>
                 </nav>
                 <Outlet/>
             </div>

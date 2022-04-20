@@ -1,10 +1,9 @@
 import React from 'react';
 import { createRoot } from 'react-dom/client';
-// import { Link, Outlet } from 'react-router-dom';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import { IListNode, List } from './List';
 import { ListForum } from './ListForum';
-// import { Temp } from './Temp';
+import { Temp } from './Temp';
 import { App } from './App';
 
 const testList: Array<IListNode> = [
@@ -24,6 +23,7 @@ root.render(
         <Route path='/' element={<App />} >
           <Route path='list' element={ <List isOrderedList={false} list={testList} key={"rootList"} /> } />
           <Route path='forum' element={<ListForum />} />
+          <Route path='temp' element={<Temp thing={1}/>} />
         </Route>
       </Routes>
     </BrowserRouter>
