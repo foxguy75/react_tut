@@ -1,7 +1,6 @@
 import React from 'react';
 import { createRoot } from 'react-dom/client';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
-import { IListNode, List } from './List';
 import { ListForum } from './ListForum';
 import { Temp } from './Temp';
 import { App } from './App';
