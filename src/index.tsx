@@ -5,13 +5,7 @@ import { IListNode, List } from './List';
 import { ListForum } from './ListForum';
 import { Temp } from './Temp';
 import { App } from './App';
-
-const testList: Array<IListNode> = [
-  { listContent: 'Ben', children: [ { listContent: 'Brittany', children: [] }, { listContent: 'Dani', children: [] } ] },
-  { listContent: 'Izzy', children: [] },
-  { listContent: 'Maruice', children: [] },
-  { listContent: 'Gabe', children: [] }
-];
+import { BeerJournal } from './BeerJournal';
 
 const container = document.getElementById( 'root' );
 const root = createRoot( container! );
@@ -21,9 +15,11 @@ root.render(
     <BrowserRouter>
       <Routes>
         <Route path='/' element={<App />} >
-          <Route path='list' element={ <List isOrderedList={false} list={testList} key={"rootList"} /> } />
+          <Route index element={<BeerJournal /> }/>
           <Route path='forum' element={<ListForum />} />
           <Route path='temp' element={<Temp thing={1}/>} />
+          <Route path='beerJournal' element={<BeerJournal />} />
+          <Route path='*' element={<h2 style={{textAlign: "center"}}>404</h2>}/>
         </Route>
       </Routes>
     </BrowserRouter>

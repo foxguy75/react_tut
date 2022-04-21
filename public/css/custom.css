@@ -9,7 +9,13 @@ nav{
 
 .nav-link{
     text-decoration: none;
-    padding-right: 1rem;
+    padding-right: 1.5rem;
     text-transform: uppercase;
     letter-spacing: .2rem;
+    color: inherit;
+}
+
+body{
+    background-color: #2d2d30;
+    color: white
 }
