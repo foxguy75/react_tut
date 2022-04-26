@@ -1,31 +1,26 @@
 import React from 'react';
 import { createRoot } from 'react-dom/client';
-import { IListNode, List } from './List';
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import { ListForum } from './ListForum';
 import { Temp } from './Temp';
-
-const testList: Array<IListNode> = [
-  { listContent: 'Ben', children: [ { listContent: 'Brittany', children: [] }, { listContent: 'Dani', children: [] } ] },
-  { listContent: 'Izzy', children: [] },
-  { listContent: 'Maruice', children: [] },
-  { listContent: 'Gabe', children: [] }
-];
-
-const containerStyle: React.CSSProperties = { textAlign: "center" };
-const containerStyleList: React.CSSProperties = { textAlign: "left" };
+import { App } from './App';
+import { BeerJournal } from './BeerJournal';
 
 const container = document.getElementById( 'root' );
 const root = createRoot( container! );
+
 root.render(
   <React.StrictMode>
-    <div className="container" style={containerStyle}> 
-      <Temp thing={1} />
-    </div>
-    <div className="container" style={containerStyleList}>
-      <List isOrderedList={false} list={testList} key={"rootList"}></List>
-    </div>
-    <div className="container" style={containerStyleList}>
-      <ListForum></ListForum>
-    </div>
+    <BrowserRouter>
+      <Routes>
+        <Route path='/' element={<App />} >
+          <Route index element={<BeerJournal /> }/>
+          <Route path='forum' element={<ListForum />} />
+          <Route path='temp' element={<Temp thing={1}/>} />
+          <Route path='beerJournal' element={<BeerJournal />} />
+          <Route path='*' element={<h2 style={{textAlign: "center"}}>404</h2>}/>
+        </Route>
+      </Routes>
+    </BrowserRouter>
   </React.StrictMode>
 );

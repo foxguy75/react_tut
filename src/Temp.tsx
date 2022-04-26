@@ -31,8 +31,9 @@ export class Temp extends Component< props, state >
 
     render() 
     {        
+        const containerStyle: React.CSSProperties = { textAlign: "center" };
         return( 
-            <div>
+            <div className="container" style={containerStyle}>
                 <div className="row">
                     <div className="twelve columns">  
                         <h2>
